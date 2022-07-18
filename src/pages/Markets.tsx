@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { Box } from '@chakra-ui/react'
 import { useQuery } from 'react-query'
-import { useNear } from '#providers/NearProvider'
 import { tokenConfig } from '#utils/token'
 import { MarketTable } from '#modules/Markets/MarketTable'
 import { balanceWithDecimalFormatter } from '#utils/formatter'
@@ -11,61 +10,60 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function Markets() {
-  const { defiContract, oracleContract } = useNear()
-  const { contract, ready } = defiContract
-  const { crytoPriceMap } = oracleContract
-  const { data: assetsPagedData } = useQuery(
-    'defi.get_assets_paged',
-    () => contract.get_assets_paged({ from_index: 0, limit: 10 }),
-    {
-      enabled: ready,
-    }
-  )
+  // const { defiContract } = useNear()
+  // const { contract, ready } = defiContract
+  // const { data: assetsPagedData } = useQuery(
+  //   'defi.get_assets_paged',
+  //   () => contract.get_assets_paged({ from_index: 0, limit: 10 }),
+  //   {
+  //     enabled: ready,
+  //   }
+  // )
 
-  const { data: assetsAPYPagedData } = useQuery(
-    'defi.get_assets_paged_detailed',
-    () => contract.get_assets_paged_detailed({ from_index: 0, limit: 10 }),
-    {
-      enabled: ready,
-    }
-  )
+  // const { data: assetsAPYPagedData } = useQuery(
+  //   'defi.get_assets_paged_detailed',
+  //   () => contract.get_assets_paged_detailed({ from_index: 0, limit: 10 }),
+  //   {
+  //     enabled: ready,
+  //   }
+  // )
 
-  const assetsAPYMap = useMemo(() => {
-    return keyBy(assetsAPYPagedData || [], 'token_id')
-  }, [assetsAPYPagedData])
+  // const assetsAPYMap = useMemo(() => {
+  //   return keyBy(assetsAPYPagedData || [], 'token_id')
+  // }, [assetsAPYPagedData])
 
-  const assets = useMemo(() => {
-    return (assetsPagedData || []).map((item) => {
-      const [id, token] = item
-      const config = tokenConfig[id as keyof typeof tokenConfig] || {}
-      const { name, symbol, nameUsd, thumbnail, decimals } = config
-      const suppliedBalance = balanceWithDecimalFormatter(token?.supplied.balance, decimals)
-      const borrowedBalance = balanceWithDecimalFormatter(token?.borrowed.balance, decimals)
-      const priceUsd = crytoPriceMap[config.nameUsd]?.price || 1
-      const totalSupplied = suppliedBalance * priceUsd
-      const totalBorrowed = borrowedBalance * priceUsd
-      const apyInfo = assetsAPYMap[id] || {}
-      const borrowAPY = (apyInfo.borrow_apy || 0) as number
-      const supplyAPY = (apyInfo.supply_apy || 0) as number
+  // const assets = useMemo(() => {
+  //   return (assetsPagedData || []).map((item) => {
+  //     const [id, token] = item
+  //     const config = tokenConfig[id as keyof typeof tokenConfig] || {}
+  //     const { name, symbol, nameUsd, thumbnail, decimals } = config
+  //     const suppliedBalance = balanceWithDecimalFormatter(token?.supplied.balance, decimals)
+  //     const borrowedBalance = balanceWithDecimalFormatter(token?.borrowed.balance, decimals)
+  //     // const priceUsd = crytoPriceMap[config.nameUsd]?.price || 1
+  //     // const totalSupplied = suppliedBalance * priceUsd
+  //     // const totalBorrowed = borrowedBalance * priceUsd
+  //     const apyInfo = assetsAPYMap[id] || {}
+  //     const borrowAPY = (apyInfo.borrow_apy || 0) as number
+  //     const supplyAPY = (apyInfo.supply_apy || 0) as number
 
-      return {
-        ...token,
-        id: id,
-        name,
-        symbol,
-        nameUsd,
-        thumbnail,
-        decimals,
-        suppliedBalance,
-        borrowedBalance,
-        totalSupplied,
-        totalBorrowed,
-        priceUsd,
-        borrowAPY,
-        supplyAPY,
-      }
-    })
-  }, [assetsPagedData, crytoPriceMap, assetsAPYMap])
+  //     return {
+  //       ...token,
+  //       id: id,
+  //       name,
+  //       symbol,
+  //       nameUsd,
+  //       thumbnail,
+  //       decimals,
+  //       suppliedBalance,
+  //       borrowedBalance,
+  //       // totalSupplied,
+  //       // totalBorrowed,
+  //       // priceUsd,
+  //       borrowAPY,
+  //       supplyAPY,
+  //     }
+  //   })
+  // }, [assetsPagedData, assetsAPYMap])
 
   return (
     <>
@@ -99,7 +97,7 @@ export default function Markets() {
             </span>
           </div>
         </div>
-        <MarketTable assets={assets} />
+        <MarketTable  />
       </div>
     </>
   )

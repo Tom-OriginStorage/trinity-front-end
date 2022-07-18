@@ -26,11 +26,6 @@ export const navDashboard = [
     path: '/access',
   },
   {
-    title: 'Borrow/Repay',
-    icon: <FontAwesomeIcon icon={faHandHoldingDollar} />,
-    path: '/borrow',
-  },
-  {
     title: 'History',
     icon: <FontAwesomeIcon icon={faMemory} />,
     path: '/records',
@@ -42,20 +37,3 @@ export const navDashboard = [
   },
 ]
 
-export const navDashboard2 = [
-  {
-    title: 'DAO',
-    icon: <FontAwesomeIcon icon={faStoreSlash} />,
-    path: '/DAO',
-  },
-  {
-    title: 'Bridges',
-    icon: <FontAwesomeIcon icon={faStoreSlash} />,
-    path: '/Bridges',
-  },
-  {
-    title: 'NFT Gallery',
-    icon: <FontAwesomeIcon icon={faStoreSlash} />,
-    path: '/nft-market',
-  },
-]

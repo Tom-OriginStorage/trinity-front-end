@@ -1,4 +1,4 @@
-import { Supplied, TokenConfig } from '#types/defiContract'
+// import { Supplied, TokenConfig } from '#types/defiContract'
 import { cashFormatter, percentFormatter } from '#utils/formatter'
 import { Button, Image } from '@chakra-ui/react'
 
@@ -40,7 +40,7 @@ interface Assets {
   priceUsd: number
   reserved: string
   last_update_timestamp: string
-  config: TokenConfig
+  // config: TokenConfig
   borrowAPY: number
   supplyAPY: number
 }
@@ -48,7 +48,7 @@ interface Assets {
 interface MarketTableProps {
   assets: Assets[]
 }
-export function MarketTable({ assets }: MarketTableProps) {
+export function MarketTable() {
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-right text-gray-500 dark:text-gray-400">
@@ -62,7 +62,7 @@ export function MarketTable({ assets }: MarketTableProps) {
           </tr>
         </thead>
         <tbody>
-          {assets.map((item, index) => (
+          {/* {assets.map((item, index) => (
             <tr
               key={index}
               className="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700 hover:opacity-80"
@@ -113,7 +113,7 @@ export function MarketTable({ assets }: MarketTableProps) {
                 </div>
               </td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </table>
     </div>
