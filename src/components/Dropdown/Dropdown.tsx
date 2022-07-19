@@ -49,7 +49,7 @@ const Dropdown = <T,>({
             </button>
             <div className="flex flex-col justify-between text-right">
               <p className="text-xs text-slate-400-500 border-b border-dotted border-gray-400">
-                Deposit Total APY
+                Bond Fixed Interest
               </p>
               <p className="text-base text-pink-500 font-medium">
                 {!!itemSelected ? itemSelected['apy'] : '0'}%

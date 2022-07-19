@@ -14,7 +14,7 @@ const borrowingsConfig: IColumnsProps[] = [
     children: null,
     isHover: false,
     isSort: false,
-    name: 'Borrow Total APY',
+    name: 'Bond Fixed Interest',
     onSort: () => null,
   },
   {
@@ -22,7 +22,7 @@ const borrowingsConfig: IColumnsProps[] = [
     children: null,
     isHover: false,
     isSort: false,
-    name: 'Borrow Amount',
+    name: 'Final Value Per Unit',
     onSort: () => null,
   },
   {
@@ -42,7 +42,16 @@ const borrowingsConfig: IColumnsProps[] = [
     onSort: () => null,
   },
 ]
-const rows = []
+const rows = [
+  {
+    key: '1',
+    asset: 'FIL-BOND',
+    apy: '13.9%',
+    amount: '$119.86',
+    balance: '38',
+    action: 'Redeem',
+  },
+]
 export const TableBorrowings = () => {
   return <Table columns={borrowingsConfig} rows={rows} name={TYPE_TABLE.BORROW} />
 }

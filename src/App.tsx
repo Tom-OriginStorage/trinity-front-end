@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LayoutProvider } from './layouts'
 import './style/main.css'
-// import { NearProvider } from '#providers/NearProvider/'
 import { Backdrop } from '#components/Backdrop'
 import { QueryClient, QueryClientProvider } from 'react-query'
 

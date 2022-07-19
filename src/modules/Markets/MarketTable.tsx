@@ -8,19 +8,19 @@ const HEADERS = [
     className: 'text-left',
   },
   {
-    name: 'Deposit Market($)',
+    name: 'Bond Market($)',
   },
   {
-    name: 'Deposit Total APY',
+    name: 'Coupon(%)',
   },
   {
-    name: 'Borrow Market($)',
+    name: 'Maturity',
   },
   {
-    name: 'Borrow Total APY',
+    name: 'Supply',
   },
   {
-    name: 'Liquidity($)',
+    name: 'Underlying Instrument',
   },
   {
     name: 'Action',

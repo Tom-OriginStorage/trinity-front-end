@@ -14,8 +14,8 @@ export const CardAsset = () => {
                 <CunruIconSVG className="fill-white w-6" />
               </div>
               <div className="text flex flex-col">
-                <div className="title text-sm">Deposit Total</div>
-                <div className="value font-bold text-lg">$ 0</div>
+                <div className="title text-sm">Bond Total</div>
+                <div className="value font-bold text-lg">$106,721</div>
               </div>
             </div>
             <div className="card-children deposit w-full sm:w-1/3 flex items-center h-fit  mb-4 md:mb-0">
@@ -23,8 +23,8 @@ export const CardAsset = () => {
                 <JieDaiIconSVG className="fill-white w-6" />
               </div>
               <div className="text">
-                <div className="title text-sm">Borrow Total</div>
-                <div className="value font-bold text-lg">$ 0</div>
+                <div className="title text-sm">Bond Reedemable</div>
+                <div className="value font-bold text-lg">$1,702</div>
               </div>
             </div>
             <div className="card-children deposit w-full sm:w-1/3 flex items-center h-fit">
@@ -37,15 +37,15 @@ export const CardAsset = () => {
               </div>
               <div className="flex-1">
                 <div className="text flex justify-between items-center flex-1">
-                  <div className="title text-sm">Used Ratio</div>
-                  <div className="font-bold text-lg text-gray-400">10 %</div>
+                  <div className="title text-sm">Accumulated Profits</div>
+                  <div className="font-bold text-lg text-gray-400">42.0%</div>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5 bg-gray-300">
                   <div className="bg-pink-600 h-2.5 rounded-full w-6"></div>
                 </div>
                 <div className="text flex justify-between items-center flex-1">
                   <div className="title text-sm">Maximum</div>
-                  <div className="font-medium text-xs text-black-400">$ 0</div>
+                  <div className="font-medium text-xs text-black-400">$69</div>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@ export const CardAsset = () => {
               <Image src="/assets/my-assets/WPC.png" alt="" className="fill-white w-6" />
             </div>
             <div className="text text-sm">
-              <p>Pending claim WPC</p>
+              <p>Pending claim TTY</p>
             </div>
           </div>
           <div className="flex justify-between mt-1">

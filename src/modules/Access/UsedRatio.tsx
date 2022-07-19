@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IUsedRatioProps } from './types'
 
 const mockAPY = {
-  availableAmount: '0',
-  depositAPY: '2.98%',
-  depositAmount: '0',
+  availableAmount: '$1,720',
+  depositAPY: '29.8%',
+  depositAmount: '$106,721',
   marketLiquidity: '1.685K',
   maximumLTVRatio: '80%',
-  miningAPY: '0.17%',
+  miningAPY: '17.4%',
 }
 export const UsedRatio = () => {
   const {
@@ -33,7 +33,7 @@ export const UsedRatio = () => {
           </div>
           <div className="flex flex-col flex-1">
             <h3 className="text-sm text-gray-400">
-              Used Ratio
+              Accumulated Profits
               <span className="pl-1">
                 <FontAwesomeIcon icon={faCircleInfo} />
               </span>
@@ -45,14 +45,14 @@ export const UsedRatio = () => {
                 <div className="w-0 h-0 border-4 border-solid border-t-gray-800 border-l-transparent border-r-transparent border-b-transparent"></div>
               </div>
               <div className="max absolute left-[80%] bottom-4 -ml-1 -translate-x-[64%]">
-                <h3 className="text-xs text-gray-400 border-dotted border-b-2 leading-none">Max</h3>
+                <h3 className="text-xs text-gray-400 border-dotted border-b-2 leading-none">Current</h3>
               </div>
               <div className="max absolute left-[100%] -bottom-2 -ml-1">
                 <div className="w-0 h-0 border-4 border-solid border-b-gray-800 border-l-transparent border-r-transparent border-t-transparent"></div>
               </div>
               <div className="max absolute left-[100%] -bottom-6 -ml-1 -translate-x-[86%]">
                 <h3 className="text-xs text-gray-400 border-dotted border-b-2 leading-none">
-                  Liquidation
+                  Jackpot
                 </h3>
               </div>
             </div>
@@ -60,27 +60,27 @@ export const UsedRatio = () => {
         </div>
         <div className="flex justify-between w-full h-[100px] items-center mt-2 border-dotted border-b-2">
           <div className="text-gray-400 text-sm">
-            <p>Deposit Amount</p>
+            <p>Bond Total</p>
             <p>
-              (ETH) <FontAwesomeIcon icon={faCircleInfo} />
+              (USD) <FontAwesomeIcon icon={faCircleInfo} />
             </p>
           </div>
           <div className="value text-lg text-black">{depositAmount}</div>
         </div>
         <div className="flex justify-between w-full h-[100px] items-center mt-2 border-dotted border-b-2">
           <div className="text-gray-400 text-sm">
-            Available Amount <FontAwesomeIcon icon={faCircleInfo} />
+            Bond Redeemable <FontAwesomeIcon icon={faCircleInfo} />
           </div>
           <div className="value">{availableAmount}</div>
         </div>
         <div className="h-[140px] flex items-center w-full">
           <div className="h-[94px] justify-between flex flex-col w-full">
             <div className="flex justify-between">
-              <p className="text-gray-400">Deposit APY</p>
+              <p className="text-gray-400">Bond Yield</p>
               <p>{depositAPY}</p>
             </div>
             <div className="flex justify-between">
-              <p className="text-gray-400">Mining APY</p>
+              <p className="text-gray-400">TTY Yield</p>
               <p>{miningAPY}</p>
             </div>
             <div className="flex justify-between">

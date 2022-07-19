@@ -44,13 +44,17 @@ const ERC_20 = [
 // }
 
 export const RequestApprove = () => {
-  const provider = new ethers.providers.JsonRpcProvider(KOVAN);
-  const wallet = new ethers.Wallet("beb7c8f678843923a79711f8bdfc8240115f578d6ba0367d9af5b7b1067e935b", provider);
-  const address = wallet.address;
-  const approveCurrency = ()=>{
-        const contract = new ethers.Contract(KOVAN_DAI, ERC_20, wallet);
-    const result =  contract.approve(KOVAN_BOND, ethers.utils.parseUnits("10", "ether"));
-    console.log(result);
+  const approveCurrency = async () =>{
+    const {ethereum} = window;
+    if (ethereum) {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const bondContract = new ethers.Contract(KOVAN_DAI, ERC_20, signer);
+      const result = await bondContract.approve(KOVAN_BOND, ethers.utils.parseUnits("1000", "ether"));
+      console.log(result);
+    } else {
+      alert("Please connect your Metamask");
+    }
   }
   return (
     <>

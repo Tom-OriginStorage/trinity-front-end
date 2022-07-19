@@ -18,7 +18,7 @@ export const TabHeader = ({ color, openTab, setOpenTab }: ITabHeaderProps) => {
         openTab={openTab}
         setOpenTab={setOpenTab}
         tabIndex={1}
-        tabName="Deposits"
+        tabName="Current Bonds"
         key={1}
       />
       <Tab
@@ -26,7 +26,7 @@ export const TabHeader = ({ color, openTab, setOpenTab }: ITabHeaderProps) => {
         openTab={openTab}
         setOpenTab={setOpenTab}
         tabIndex={2}
-        tabName="Borrowings"
+        tabName="Mature Bonds"
         key={2}
       />
       <div
@@ -38,7 +38,7 @@ export const TabHeader = ({ color, openTab, setOpenTab }: ITabHeaderProps) => {
           <RingIconSVG className="fill-slate-400 group-hover:fill-white w-4 block mr-1" />
         </div>
         <div className="text text-black group-hover:text-white font-medium text-xs">
-          Liquidation Reminder Settings
+          Maturity Reminder Settings
         </div>
       </div>
     </ul>
