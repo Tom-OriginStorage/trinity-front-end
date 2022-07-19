@@ -1,29 +1,41 @@
 import React, { useCallback, useMemo, useRef } from 'react'
-import { BALANCE_TYPE } from './constants'
 import { IInputAccessProps } from './types'
+import bond from "./Bond.json";
+import { ethers } from "ethers";
+import { ethereum } from '@graphprotocol/graph-ts';
+
+const KOVAN = "https://kovan.infura.io/v3/0cbb090d75d347978dc3111df4e1c83c";
+const KOVAN_BOND = "0x23EE98B6aDA65FdA387Aa2707b0825567494F311";
+const KOVAN_DAI = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
 
 export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAccessProps) => {
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef()
-
-  const typeBalance = useMemo(() => {
-    const walletBalance = BALANCE_TYPE.DEPOSIT
-    const availableBalance = BALANCE_TYPE.WITHDRAW
-    return openTab === 1 ? walletBalance : availableBalance
-  }, [openTab])
 
   const balance = useMemo(() => {
     const value = useInfoBalance[openTab === 1 ? 'balance' : 'available']
     return `${value[itemSelected?.name?.toLowerCase()] || '0'}`
   }, [itemSelected, openTab])
 
-  const handleSetMaxValueInput = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      (inputRef?.current as any).value = balance
-      event.preventDefault()
-    },
-    [balance]
-  )
+  // const handleSetMaxValueInput = useCallback(
+  //   (event: React.MouseEvent<HTMLButtonElement>) => {
+  //     (inputRef?.current as any).value = balance
+  //     event.preventDefault()
+  //   },
+  //   [balance]
+  // )
 
+  const {ethereum} = window ;
+  // const provider = new ethers.providers.JsonRpcProvider(KOVAN);
+  const provider = new ethers.providers.Web3Provider(ethereum) ;
+  // const wallet = new ethers.Wallet("beb7c8f678843923a79711f8bdfc8240115f578d6ba0367d9af5b7b1067e935b", provider);
+
+
+  const SubmitMint = async ()=>{
+    const signer = provider.getSigner()  ;
+    const bondContract = new ethers.Contract(KOVAN_BOND, bond, signer);
+    const result = await bondContract.mintPublic(1);
+    console.log(result);
+  }
   return (
     <div>
       <div className="w-[496px] mx-auto mt-10 relative z-0">
@@ -36,16 +48,14 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
           max
         </button>
       </div>
-      <div className="balance mt-8 text-center text-sm">
-        <p>
-          {typeBalance} {balance} {itemSelected?.name || ''}
-        </p>
-      </div>
+
       <button
-        onClick={handleSetMaxValueInput}
+        // onClick={handleSetMaxValueInput}
+        onClick={SubmitMint}
+
         className="mx-auto mt-[29px] block rounded-full bg-pink-500 text-white w-[248px] h-[54px]"
       >
-        Submit
+        Deposit 
       </button>
     </div>
   )

@@ -64,8 +64,10 @@ export const AccessTab = () => {
               openTab={openTab}
             />
           ) : (
-            <RequestApprove requestApprove={handleRequestApproveCurrency} />
-          )}
+            // <RequestApprove requestApprove={handleRequestApproveCurrency} />
+            <RequestApprove   />
+
+)}
         </div>
       </Tabs>
     </div>

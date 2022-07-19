@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { Navigation } from './Navigation'
-import { NavigationWithConnected } from './NavigationWithConnected'
+import  NavigationWithConnected  from './NavigationWithConnected'
 import { Sidebar } from './Sidebar'
 
 interface DashboardProps {

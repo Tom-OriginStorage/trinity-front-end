@@ -1,9 +1,5 @@
 import { ITabCurrency, ITabItem } from './types'
 
-export const BALANCE_TYPE = {
-  DEPOSIT: 'Wallet Balance',
-  WITHDRAW: 'Available Balance',
-}
 
 export const tabItems: ITabItem[] = [
   {
@@ -30,7 +26,7 @@ export const listCurrency: ITabCurrency[] = [
     name: 'DAI',
     apy: 0.442,
     image: 'DAI.png',
-    isPermission: false,
+    isPermission: true,
     price: '123.21',
   },
   {
