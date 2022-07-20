@@ -19,15 +19,17 @@ export const listCurrency: ITabCurrency[] = [
     name: 'DAI-Bond',
     apy: 4.42,
     image: 'DAI.png',
-    isPermission: true,
+    isPermission: false,
     price: '123.21',
+    contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
   },
   {
     name: 'ETH-Bond',
     apy: 3.22,
     image: 'ETH.png',
-    isPermission: true,
+    isPermission: false,
     price: '2689.21',
+    contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
   },
   {
     name: 'USDC-Bond',
@@ -35,6 +37,7 @@ export const listCurrency: ITabCurrency[] = [
     image: 'USDC.png',
     isPermission: false,
     price: '456.21',
+    contract: "0xe22da380ee6B445bb8273C81944ADEB6E8450422",
   },
   {
     name: 'USDT-Bond',
@@ -42,6 +45,7 @@ export const listCurrency: ITabCurrency[] = [
     image: 'USDT.png',
     isPermission: false,
     price: '456.21',
+    contract: "0x13512979ADE267AB5100878E2e0f485B568328a4",
   },
   {
     name: 'WBTC-Bond',
@@ -49,6 +53,7 @@ export const listCurrency: ITabCurrency[] = [
     image: 'WBTC.png',
     isPermission: false,
     price: '456.21',
+    contract: "0x3b92f58feD223E2cB1bCe4c286BD97e42f2A12EA",
   },
   {
     name: 'UNI-Bond',
@@ -56,6 +61,7 @@ export const listCurrency: ITabCurrency[] = [
     image: 'UNI.png',
     isPermission: false,
     price: '456.21',
+    contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
   },
 ]
 

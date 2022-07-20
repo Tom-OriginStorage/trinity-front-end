@@ -9,6 +9,7 @@ export interface ITabCurrency {
   apy: number
   isPermission: boolean
   price: string
+  contract: string
 }
 
 export interface IUsedRatioProps {
