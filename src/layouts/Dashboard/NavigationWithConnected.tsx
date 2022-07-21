@@ -41,7 +41,6 @@ export default function  NavigationWithConnected (){
       {showModal && <AccountModal setShowModal={setShowModal} />}
       {account ? (
         <>
-          {/* <AccountLabel onClick={() => setShowModal(!showModal)}>{ens ?? shortenAddress(account)}</AccountLabel> */}
           <AccountLabel onClick={() => setShowModal(!showModal)}>{ens ?? shortenAddress(account)}</AccountLabel>
 
           <LoginButton onClick={() => deactivate()}>Disconnect</LoginButton>
@@ -64,15 +63,18 @@ const ErrorWrapper = styled.div`
 const Account = styled.div`
   display: flex;
   align-items: center;
+    margin-left: 40px;
+
 `
 
 const LoginButton = styled(Button)`
   background-color: ${Colors.Yellow[100]};
+  
 `
 
 const AccountLabel = styled(Button)`
   height: 32px;
-  margin-right: -40px;
+  margin-right: 40px;
   padding-right: 40px;
   padding-left: 8px;
   background-color: ${Colors.Yellow[100]};

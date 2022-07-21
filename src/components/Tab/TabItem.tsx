@@ -12,7 +12,7 @@ export const Tab = ({ openTab, tab, setOpenTab }: ITabProps) => {
 
   const handleStyleTab = useMemo(() => {
     const classNameActivate = `bg-white text-black shadow-assetTab`
-    const classNameInActivate = 'text-gray-400 bg-gray-200 hover:bg-pink-600 hover:text-white'
+    const classNameInActivate = 'text-gray-400 bg-gray-200 hover:bg-blue-600 hover:text-white'
 
     return openTab === tabIndex ? classNameActivate : classNameInActivate
   }, [tabIndex, openTab])

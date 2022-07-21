@@ -32,7 +32,7 @@ export const DropdownItem = <T,>({ item, onSelect }: PropsWithChildren<IDropdown
           <img className="w-6" src={imagePath} alt="" />
           <span className="font-medium text-black text-base ml-2 block">{name}</span>
         </div>
-        <span className="text-sm text-pink-500">{apy}</span>
+        <span className="text-sm text-purple-500">{apy}</span>
       </a>
     </li>
   )

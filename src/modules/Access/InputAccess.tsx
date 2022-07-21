@@ -69,11 +69,11 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
       {openTab == 1 ? (
       <button 
         onClick={SubmitMint}
-        className="mx-auto mt-[29px] block rounded-full bg-pink-500 text-white w-[248px] h-[54px]"
+        className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
       >Mint</button>) : (
       <button
         onClick={Redeem}
-        className="mx-auto mt-[29px] block rounded-full bg-pink-500 text-white w-[248px] h-[54px]"
+        className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
       >Redeem</button>
       )}
     </div>

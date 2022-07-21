@@ -72,10 +72,10 @@ export default function Markets() {
           h="130px"
           color="white"
           w="49%"
-          className="flex rounded-3xl bg-pink-200 p-4 flex-col justify-between py-6"
+          className="flex rounded-3xl bg-blue-200 p-4 flex-col justify-between py-6"
         >
           <p className="text-neutral-700">Bond Market Size</p>
-          <span className="text-4xl font-bold text-pink-700">$ 25,750,426.95</span>
+          <span className="text-4xl font-bold text-pink-700">$ 25,750,426</span>
         </Box>
         <Box
           h="130px"
@@ -84,7 +84,7 @@ export default function Markets() {
           className="flex rounded-3xl bg-violet-100 p-4 flex-col justify-between py-6"
         >
           <p className="text-neutral-700">Bond Maturity Size</p>
-          <span className="text-4xl font-bold text-purple-800">$ 5,150,520.10</span>
+          <span className="text-4xl font-bold text-purple-800">$ 5,150,520</span>
         </Box>
       </div>
       <div className="mt-5">

@@ -51,7 +51,7 @@ const Dropdown = <T,>({
               <p className="text-xs text-slate-400-500 border-b border-dotted border-gray-400">
                 Bond Fixed Interest
               </p>
-              <p className="text-base text-pink-500 font-medium">
+              <p className="text-base text-purple-500 font-medium">
                 {!!itemSelected ? itemSelected['apy'] : '0'}%
               </p>
             </div>

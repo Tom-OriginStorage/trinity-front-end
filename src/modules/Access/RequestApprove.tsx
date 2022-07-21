@@ -35,7 +35,7 @@ export const RequestApprove = ({ requestApprove }: IRequestApproveProps) => {
       </div>
       <button
         onClick={requestApprove}
-        className="mx-auto mt-[29px] block rounded-full bg-pink-500 text-white w-[248px] h-[54px]"
+        className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
       >
         Approve
       </button>

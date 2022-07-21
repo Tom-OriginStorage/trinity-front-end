@@ -56,7 +56,15 @@ export const listCurrency: ITabCurrency[] = [
     contract: "0x3b92f58feD223E2cB1bCe4c286BD97e42f2A12EA",
   },
   {
-    name: 'UNI-Bond',
+    name: 'Trinity-Bond',
+    apy: 2.48,
+    image: 'trinitybond.png',
+    isPermission: false,
+    price: '456.21',
+    contract: "TrinityBondContract",
+  },
+  {
+    name: 'Uni-Bond',
     apy: 2.48,
     image: 'UNI.png',
     isPermission: false,

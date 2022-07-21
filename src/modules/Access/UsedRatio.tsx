@@ -21,7 +21,7 @@ export const UsedRatio = () => {
   }: IUsedRatioProps = mockAPY
 
   return (
-    <div className="bg-pink-500 relative rounded-3xl w-full lg:w-[344px] h-[497px] mt-[64px]">
+    <div className="bg-blue-500 relative rounded-3xl w-full lg:w-[344px] h-[497px] mt-[64px]">
       <div className="bg-white rounded-3xl absolute top mt-1 w-full lg:w-[344px] h-[497px] px-8 pt-10 pb-[22px]">
         <div className="flex items-stretch border-dotted border-b-2 pb-10">
           <div className="image mr-4">
@@ -40,7 +40,7 @@ export const UsedRatio = () => {
             </h3>
             <h3 className="text-lg text-green-500 mt-[2px]">{availableAmount}%</h3>
             <div className="w-full rounded-full h-1.5 bg-gray-300 relative">
-              <div className="bg-pink-600 h-1.5 rounded-full w-[80%]"></div>
+              <div className="bg-blue-600 h-1.5 rounded-full w-[80%]"></div>
               <div className="max absolute left-[80%] -top-2 -ml-1">
                 <div className="w-0 h-0 border-4 border-solid border-t-gray-800 border-l-transparent border-r-transparent border-b-transparent"></div>
               </div>

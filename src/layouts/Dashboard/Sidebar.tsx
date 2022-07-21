@@ -46,8 +46,8 @@ export const Sidebar = ({ onClose, ...rest }: SidebarProps) => {
                 relative flex flex-row items-center h-12 focus:outline-none  border-l-4 border-transparent hover:border-indigo-500 pr-6 mx-3 rounded-2xl
                 ${
                   isActive
-                    ? 'bg-white text-pink-500 font-bold  '
-                    : 'hover:bg-white  hover:text-pink-500'
+                    ? 'bg-white text-blue-500 font-bold  '
+                    : 'hover:bg-white  hover:text-blue-500'
                 }
                 `}
               >
@@ -58,7 +58,7 @@ export const Sidebar = ({ onClose, ...rest }: SidebarProps) => {
           )
         })}
 
-        <li className="border-t border-pink-300 py-2 mx-2 rounded" />
+        <li className="border-t border-blue-300 py-2 mx-2 rounded" />
 
       </ul>
     </Box>

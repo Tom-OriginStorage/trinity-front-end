@@ -63,7 +63,7 @@ export const Table = ({ columns, rows, name }: ITableProps) => {
           </div>
           <button
             className={`px-8 mt-6 text-white h-9 rounded-full ${
-              name === TYPE_TABLE.DEPOSIT ? 'bg-pink-500' : 'bg-indigo-500'
+              name === TYPE_TABLE.DEPOSIT ? 'bg-blue-500' : 'bg-indigo-500'
             }`}
           >
             {name === TYPE_TABLE.DEPOSIT ? 'Deposit now' : 'Borrow now'}

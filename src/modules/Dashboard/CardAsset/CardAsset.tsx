@@ -10,7 +10,7 @@ export const CardAsset = () => {
         <div className="cards">
           <div className="card-container flex items-center flex-wrap md:flex-nowrap">
             <div className="card-children deposit w-full sm:w-1/3 flex items-center h-fit  mb-4 md:mb-0">
-              <div className="image bg-pink-600 p-3 w-fit rounded-xl mr-4">
+              <div className="image bg-purple-600 p-3 w-fit rounded-xl mr-4">
                 <CunruIconSVG className="fill-white w-6" />
               </div>
               <div className="text flex flex-col">
@@ -41,7 +41,7 @@ export const CardAsset = () => {
                   <div className="font-bold text-lg text-gray-400">42.0%</div>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5 bg-gray-300">
-                  <div className="bg-pink-600 h-2.5 rounded-full w-6"></div>
+                  <div className="bg-blue-600 h-2.5 rounded-full w-6"></div>
                 </div>
                 <div className="text flex justify-between items-center flex-1">
                   <div className="title text-sm">Maximum</div>
@@ -64,7 +64,7 @@ export const CardAsset = () => {
           </div>
           <div className="flex justify-between mt-1">
             <div className="value font-bold text-lg">0</div>
-            <button className="bg-pink-500 px-4 py-0 rounded-full font-normal h-7 w-20 text-white">
+            <button className="bg-purple-500 px-4 py-0 rounded-full font-normal h-7 w-20 text-white">
               Go
             </button>
           </div>
