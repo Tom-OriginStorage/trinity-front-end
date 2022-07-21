@@ -39,7 +39,7 @@ export const AccessTab = () => {
         await Promise.all(userList.map(async (item) => {
           const tokenContract = new ethers.Contract(item.contract, ERC_20, signer);
           const allowance = await tokenContract.allowance(userAddress, KOVAN_BOND);
-          if (allowance.gte(ethers.utils.parseUnits("1000", "ether"))) {
+          if (allowance.gte(ethers.utils.parseUnits("1000.00", "ether"))) {
             item.isPermission = true;
             if (item.contract === itemSelected.contract) {
               itemSelected.isPermission = true;
@@ -65,7 +65,7 @@ export const AccessTab = () => {
       const tokenContract = new ethers.Contract(itemSelected.contract, ERC_20, signer);
 
       try {
-        const tx = await tokenContract.approve(KOVAN_BOND, ethers.utils.parseUnits("1000", "ether"));
+        const tx = await tokenContract.approve(KOVAN_BOND, ethers.utils.parseUnits("1000.00", "ether"));
         const result = await tx.wait();
         if (result["confirmations"] > 0) {
           console.log("Transaction succeeded", itemSelected);
