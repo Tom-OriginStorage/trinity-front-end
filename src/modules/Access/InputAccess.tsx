@@ -14,8 +14,8 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
     return `${value[itemSelected?.name?.toLowerCase()] || '0'}`
   }, [itemSelected, openTab])
 
-  const SubmitMint = async ()=>{
-    const {ethereum} = window;
+  const SubmitMint = async () => {
+    const { ethereum } = window;
     if (ethereum) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
@@ -27,27 +27,37 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
     }
   }
 
-  const Redeem = async ()=>{
-    const {ethereum} = window;
+  const Redeem = async () => {
+    const { ethereum } = window;
     if (ethereum) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
 
       const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
       const result = await bondContract.totalSupply();
-
+      console.log("result  " + result);
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       const userAddress = ethers.utils.getAddress(accounts[0]);
+      console.log("userAddress " + userAddress);
 
       let userBonds: Array<Number> = [];
-      for (let i = 1; i <= result; i++) {
-        const owner = await bondContract.ownerOf(ethers.BigNumber.from(i)._hex);
-        if (ethers.utils.getAddress(owner) === userAddress) {
-          userBonds.push(i);
+
+      for (let i = 1; i <= result+10; i++) {
+        try {
+          const owner = await bondContract.ownerOf(ethers.BigNumber.from(i)._hex);
+          console.log("owner " + owner);
+
+          if (ethers.utils.getAddress(owner) === userAddress) {
+            userBonds.push(i);
+            console.log("push i " + i + "userBonds " + userBonds);
+          }
+        } catch (error) {
+          console.log("error at InputAccess" + error)
         }
+
       }
       userBonds.forEach(async id => {
-        await bondContract.burn(id);
+        await bondContract.burn(id, {gasLimit: 900000});
       })
     } else {
       alert("Please connect your Metamask");
@@ -67,14 +77,14 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
         </button>
       </div>
       {openTab == 1 ? (
-      <button 
-        onClick={SubmitMint}
-        className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
-      >Mint</button>) : (
-      <button
-        onClick={Redeem}
-        className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
-      >Redeem</button>
+        <button
+          onClick={SubmitMint}
+          className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
+        >Mint</button>) : (
+        <button
+          onClick={Redeem}
+          className="mx-auto mt-[29px] block rounded-full bg-blue-500 text-white w-[248px] h-[54px]"
+        >Redeem</button>
       )}
     </div>
   )
