@@ -1,5 +1,4 @@
 import { IRequestApproveProps } from "./types"
-import bond from "./Bond.json";
 import { ethers } from "ethers";
 
 const KOVAN = "https://kovan.infura.io/v3/0cbb090d75d347978dc3111df4e1c83c";

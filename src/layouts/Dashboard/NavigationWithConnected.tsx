@@ -1,11 +1,15 @@
-import { Avatar, Box, Button, Flex,  useColorModeValue, VStack, } from '@chakra-ui/react'
+import { Avatar, Box, Button, Flex,  useColorModeValue, VStack, FlexProps} from '@chakra-ui/react'
 import { useEffect,useState } from 'react';
 import {useEtherBalance, useEthers , shortenAddress, useLookupAddress } from '@usedapp/core'
 import { AccountModal } from './AccountModal'
 import { Colors } from './styles'
 import styled from 'styled-components'
 
-export default function  NavigationWithConnected (){
+interface NavigationProps extends FlexProps {
+  onOpen: () => void
+}
+
+export const NavigationWithConnected = ({ onOpen, ...rest }: NavigationProps) =>{
   const { account, deactivate, activateBrowserWallet } = useEthers()
   const { ens } = useLookupAddress(account)
   const [showModal, setShowModal] = useState(false)
