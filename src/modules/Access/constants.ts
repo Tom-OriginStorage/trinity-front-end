@@ -29,7 +29,7 @@ export const listCurrency: ITabCurrency[] = [
     apy: 3.22,
     image: 'ETH.png',
     isPermission: true,
-    price: '2689.21',
+    price: '0.005',
     contract: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
     decimal: 18,
   },

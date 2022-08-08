@@ -23,7 +23,12 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
       if (inputRef.current) {
         amount = parseInt(inputRef.current.value) > 0 ? parseInt(inputRef.current.value) : amount;
       }
-      const result = await bondContract.mintPublic(amount, itemSelected.contract);
+      let config = {};
+      if (itemSelected.contract == "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE") {
+        const p = await bondContract.mintPrice("0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE");
+        config = {value: p.mul(amount)};
+      }
+      const result = await bondContract.mintPublic(amount, itemSelected.contract, config);
       console.log(result);
     } else {
       alert("Please connect your Metamask");
@@ -39,7 +44,7 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       const userAddress = ethers.utils.getAddress(accounts[0]);
       console.log("userAddress " + userAddress);
-      
+
       const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
       const tokens = await bondContract.tokensOwnedBy(userAddress);
       let len = tokens.length;

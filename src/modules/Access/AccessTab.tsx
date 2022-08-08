@@ -38,8 +38,8 @@ export const AccessTab = () => {
         const userAddress = ethers.utils.getAddress(accounts[0]);
     
         await Promise.all(userList.map(async (item) => {
+          const tokenContract = new ethers.Contract(item.contract, ERC_20, signer);
           if (item.contract != "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE") {
-            const tokenContract = new ethers.Contract(item.contract, ERC_20, signer);
             const allowance = await tokenContract.allowance(userAddress, KOVAN_BOND);
             if (allowance.gte(ethers.utils.parseUnits("1000.00", "ether"))) {
               item.isPermission = true;
@@ -47,13 +47,13 @@ export const AccessTab = () => {
                 itemSelected.isPermission = true;
               }
             }
-            const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
-            const p = await bondContract.mintPrice(item.contract);
-            const price = ethers.utils.formatUnits(p, item.decimal);
-            item.price = price;
-            if (item.contract === itemSelected.contract) {
-              itemSelected.price = price;
-            }
+          }
+          const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
+          const p = await bondContract.mintPrice(item.contract);
+          const price = ethers.utils.formatUnits(p, item.decimal);
+          item.price = price;
+          if (item.contract === itemSelected.contract) {
+            itemSelected.price = price;
           }
         }));
       }
