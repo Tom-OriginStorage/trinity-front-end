@@ -22,14 +22,16 @@ export const listCurrency: ITabCurrency[] = [
     isPermission: false,
     price: '123.21',
     contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
+    decimal: 18,
   },
   {
     name: 'ETH-Bond',
     apy: 3.22,
     image: 'ETH.png',
-    isPermission: false,
+    isPermission: true,
     price: '2689.21',
-    contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
+    contract: "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+    decimal: 18,
   },
   {
     name: 'USDC-Bond',
@@ -38,6 +40,7 @@ export const listCurrency: ITabCurrency[] = [
     isPermission: false,
     price: '456.21',
     contract: "0xe22da380ee6B445bb8273C81944ADEB6E8450422",
+    decimal: 6,
   },
   {
     name: 'USDT-Bond',
@@ -46,6 +49,7 @@ export const listCurrency: ITabCurrency[] = [
     isPermission: false,
     price: '456.21',
     contract: "0x13512979ADE267AB5100878E2e0f485B568328a4",
+    decimal: 6,
   },
   {
     name: 'WBTC-Bond',
@@ -54,6 +58,7 @@ export const listCurrency: ITabCurrency[] = [
     isPermission: false,
     price: '456.21',
     contract: "0x3b92f58feD223E2cB1bCe4c286BD97e42f2A12EA",
+    decimal: 8,
   },
   {
     name: 'Trinity-Bond',
@@ -62,6 +67,7 @@ export const listCurrency: ITabCurrency[] = [
     isPermission: false,
     price: '456.21',
     contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
+    decimal: 18,
   },
   {
     name: 'Uni-Bond',
@@ -69,7 +75,8 @@ export const listCurrency: ITabCurrency[] = [
     image: 'UNI.png',
     isPermission: false,
     price: '456.21',
-    contract: "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD",
+    contract: "0x260071C8D61DAf730758f8BD0d6370353956AE0E",
+    decimal: 18,
   },
 ]
 

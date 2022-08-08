@@ -7,9 +7,10 @@ import { listCurrency, tabItems, useInfoBalance } from './constants'
 import { InputAccess } from './InputAccess'
 import { RequestApprove } from './RequestApprove'
 import { ITabCurrency } from './types'
-import { ethers } from "ethers";
+import { ethers } from "ethers"
+import BOND_ABI from "../../contract/ABI_Bond.json"
 
-const KOVAN_BOND = "0x23EE98B6aDA65FdA387Aa2707b0825567494F311";
+const KOVAN_BOND = "0x93ef7b43217EF54DeA67a6A1600D6333554Df250";
 const ERC_20 = [
     "function name() view returns (string)",
     "function symbol() view returns (string)",
@@ -37,12 +38,21 @@ export const AccessTab = () => {
         const userAddress = ethers.utils.getAddress(accounts[0]);
     
         await Promise.all(userList.map(async (item) => {
-          const tokenContract = new ethers.Contract(item.contract, ERC_20, signer);
-          const allowance = await tokenContract.allowance(userAddress, KOVAN_BOND);
-          if (allowance.gte(ethers.utils.parseUnits("1000.00", "ether"))) {
-            item.isPermission = true;
+          if (item.contract != "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE") {
+            const tokenContract = new ethers.Contract(item.contract, ERC_20, signer);
+            const allowance = await tokenContract.allowance(userAddress, KOVAN_BOND);
+            if (allowance.gte(ethers.utils.parseUnits("1000.00", "ether"))) {
+              item.isPermission = true;
+              if (item.contract === itemSelected.contract) {
+                itemSelected.isPermission = true;
+              }
+            }
+            const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
+            const p = await bondContract.mintPrice(item.contract);
+            const price = ethers.utils.formatUnits(p, item.decimal);
+            item.price = price;
             if (item.contract === itemSelected.contract) {
-              itemSelected.isPermission = true;
+              itemSelected.price = price;
             }
           }
         }));

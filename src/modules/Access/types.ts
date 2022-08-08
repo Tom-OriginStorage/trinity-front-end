@@ -10,6 +10,7 @@ export interface ITabCurrency {
   isPermission: boolean
   price: string
   contract: string
+  decimal: number
 }
 
 export interface IUsedRatioProps {

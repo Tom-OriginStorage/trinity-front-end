@@ -1,10 +1,9 @@
 import React, { useCallback, useMemo, useRef } from 'react'
 import { IInputAccessProps } from './types'
-import BOND_ABI from "../../contract/ABI_Bond.json";
-import { ethers } from "ethers";
+import BOND_ABI from "../../contract/ABI_Bond.json"
+import { ethers } from "ethers"
 
-const KOVAN_BOND = "0x23EE98B6aDA65FdA387Aa2707b0825567494F311";
-const KOVAN_ADAI = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
+const KOVAN_BOND = "0x93ef7b43217EF54DeA67a6A1600D6333554Df250";
 
 export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAccessProps) => {
   const inputRef: React.RefObject<HTMLInputElement> = React.createRef()
@@ -20,7 +19,11 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
       const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
-      const result = await bondContract.mintPublic(1);
+      let amount = 1;
+      if (inputRef.current) {
+        amount = parseInt(inputRef.current.value) > 0 ? parseInt(inputRef.current.value) : amount;
+      }
+      const result = await bondContract.mintPublic(amount, itemSelected.contract);
       console.log(result);
     } else {
       alert("Please connect your Metamask");
@@ -32,33 +35,20 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
     if (ethereum) {
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
-
-      const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
-      const result = await bondContract.totalSupply();
-      console.log("result  " + result);
+      
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       const userAddress = ethers.utils.getAddress(accounts[0]);
       console.log("userAddress " + userAddress);
-
-      let userBonds: Array<Number> = [];
-
-      for (let i = 1; i <= result+10; i++) {
-        try {
-          const owner = await bondContract.ownerOf(ethers.BigNumber.from(i)._hex);
-          console.log("owner " + owner);
-
-          if (ethers.utils.getAddress(owner) === userAddress) {
-            userBonds.push(i);
-            console.log("push i " + i + "userBonds " + userBonds);
-          }
-        } catch (error) {
-          console.log("error at InputAccess" + error)
-        }
-
+      
+      const bondContract = new ethers.Contract(KOVAN_BOND, BOND_ABI, signer);
+      const tokens = await bondContract.tokensOwnedBy(userAddress);
+      let len = tokens.length;
+      if (inputRef.current) {
+        len = parseInt(inputRef.current.value) > 0 ? parseInt(inputRef.current.value) : len;
       }
-      userBonds.forEach(async id => {
-        await bondContract.burn(id, {gasLimit: 900000});
-      })
+      for (let i = 0; i < len; i++) {
+        await bondContract.burn(tokens[i], {gasLimit: 900000}); 
+      }
     } else {
       alert("Please connect your Metamask");
     }
@@ -68,7 +58,7 @@ export const InputAccess = ({ useInfoBalance, itemSelected, openTab }: IInputAcc
     <div>
       <div className="w-[496px] mx-auto mt-10 relative z-0">
         <input
-          placeholder="Please enter the amount of Bonds to purchase"
+          placeholder="Please enter the amount of Bonds"
           className="rounded-xl border-gray-300 border-[1px] px-4 pr-[106px] h-16 w-full focus:border-blue-500 focus:shadow-inputAmount"
           ref={inputRef}
         />

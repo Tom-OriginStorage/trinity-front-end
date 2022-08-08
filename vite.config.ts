@@ -14,6 +14,9 @@ export default defineConfig({
       // 'near-api-js': resolve(__dirname, './node_modules/near-api-js/dist/near-api-js.min.js'),
     },
   },
+  server: {
+    port: 3001,
+  },
   define: {
     'process.env': process.env,
   },

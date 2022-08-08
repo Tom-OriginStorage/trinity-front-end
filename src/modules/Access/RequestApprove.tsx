@@ -1,17 +1,5 @@
 import { IRequestApproveProps } from "./types"
-import { ethers } from "ethers";
 
-const KOVAN = "https://kovan.infura.io/v3/0cbb090d75d347978dc3111df4e1c83c";
-const KOVAN_BOND = "0x23EE98B6aDA65FdA387Aa2707b0825567494F311";
-const KOVAN_DAI = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
-const ERC_20 = [
-    "function name() view returns (string)",
-    "function symbol() view returns (string)",
-    "function balanceOf(address) view returns (uint)",
-    "function transfer(address to, uint amount)",
-    "function approve(address spender, uint256 amount) public returns (bool)",
-    "event Transfer(address indexed from, address indexed to, uint amount)"
-    ];
 export const RequestApprove = ({ requestApprove }: IRequestApproveProps) => {
   return (
     <>

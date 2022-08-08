@@ -10,7 +10,7 @@ const LazyMarkets = lazy(() => import('#pages/Markets'))
 const LazyAccess = lazy(() => import('#pages/Access'))
 const LazyRecords = lazy(() => import('#pages/Records'))
 const LazyNotFound = lazy(() => import('#pages/NotFound'))
-import { Mainnet,ChainId , DAppProvider} from "@usedapp/core";
+import { Mainnet, ChainId , DAppProvider} from "@usedapp/core";
 
 const queryClient = new QueryClient({})
 
