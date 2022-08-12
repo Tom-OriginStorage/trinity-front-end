@@ -24,6 +24,8 @@ contract TrinityProtocol is ERC721A, Ownable, ReentrancyGuard {
         uint256 maturity;
     }
     mapping(uint256 => Bond) public bondType;
+    mapping(uint256 => bool) public claimed;
+    uint256[] public claimers;
 
     address public withdrawAddress = address(0);
     bool public active = true;
@@ -34,6 +36,7 @@ contract TrinityProtocol is ERC721A, Ownable, ReentrancyGuard {
     string public nftSymbol = "TESTBOND";
 
     TrinityRegistry private trinityRegistry;
+    address private authority = 0xF5ade6B61BA60B8B82566Af0dfca982169a470Dc;
 
     constructor() ERC721A(nftName, nftSymbol) {
         trinityRegistry = new TrinityRegistry();
@@ -69,9 +72,37 @@ contract TrinityProtocol is ERC721A, Ownable, ReentrancyGuard {
         _safeMint(msg.sender, amount);
     }
 
-    function claimDividend() external {
+    function tokensOwnedBy(address _wallet) public view returns (uint256[] memory) {
+        uint256[] memory tokenIds = new uint256[](balanceOf(_wallet));
+        uint256 j = 0;
+        for (uint256 i = 0; i < _nextTokenId(); i++) {
+            if (ownerOf(i) == _wallet) {
+                tokenIds[j] = i;
+                j++;
+            }
+        }
+        return tokenIds;
+    }
+
+    function claimDividends(uint256 tokenId, uint256 amount, address tokenAddress, uint8 v, bytes32 r, bytes32 s) external {
         // we use ecrecover to distribute dividends
         // remember to prevent replay attack
+        require(msg.sender == ownerOf(tokenId), "You do not own this bond");
+        address user = _verifyMessage(keccak256(abi.encodePacked(tokenAddress, amount, tokenId)), v, r, s);
+        require(user == authority, "User not authorized");
+        require(claimed[tokenId] == false, "User already claimed");
+
+        // sent reward to users
+
+        claimed[tokenId] = true;
+        claimers.push(tokenId);
+    }
+
+    function resetDividends() external onlyOwner {
+        for (uint i = 0; i < claimers.length; i++){
+            claimed[claimers[i]] = false;
+        }
+        delete claimers;
     }
 
     function burn(uint256 tokenId) external nonReentrant {
@@ -86,7 +117,7 @@ contract TrinityProtocol is ERC721A, Ownable, ReentrancyGuard {
         _burn(tokenId);
     }
 
-    function _verifyMessage(bytes32 _hashedMessage, uint8 _v, bytes32 _r, bytes32 _s) public pure returns (address) {
+    function _verifyMessage(bytes32 _hashedMessage, uint8 _v, bytes32 _r, bytes32 _s) internal pure returns (address) {
         bytes memory prefix = "\x19Ethereum Signed Message:\n32";
         bytes32 prefixedHashMessage = keccak256(abi.encodePacked(prefix, _hashedMessage));
         address signer = ecrecover(prefixedHashMessage, _v, _r, _s);
@@ -132,5 +163,9 @@ contract TrinityProtocol is ERC721A, Ownable, ReentrancyGuard {
 
     function setWithdrawAddress(address _withdrawAddress) external onlyOwner {
         withdrawAddress = _withdrawAddress;
+    }
+
+    function setAuthority(address _authority) external onlyOwner {
+        authority = _authority;
     }
 }
