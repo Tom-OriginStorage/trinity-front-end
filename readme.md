@@ -23,6 +23,10 @@ Video:  https://www.youtube.com/watch?v=ZByCaZFm814
 
 ![alt text](https://user-images.githubusercontent.com/108317502/180595305-de19a63c-c2b0-4df0-a510-fbb357b8ca14.png)
  
+ 
+  ## UML Diagram (Trinity Bonds) 
+  ![alt text](https://user-images.githubusercontent.com/108317502/184301790-d6995318-b53b-4fc2-bf0e-48ba25888214.svg)
+
 
  ## User Flow
 ![alt text](https://user-images.githubusercontent.com/108317502/180595308-884050bc-8d9d-4d9c-86c2-a01e0647dea8.png)
